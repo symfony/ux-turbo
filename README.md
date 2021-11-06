@@ -110,7 +110,7 @@ public function newProduct(Request $request): Response
         // save...
 
         return $this->redirectToRoute('product_list');
-    );
+    };
 
     return $this->renderForm('product/new.html.twig', [
         'form' => $form,
