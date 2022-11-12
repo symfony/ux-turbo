@@ -38,7 +38,7 @@ final class TurboExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $loader = (new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/Resources/config')));
+        $loader = (new PhpFileLoader($container, new FileLocator(\dirname(__DIR__).'/../config')));
         $loader->load('services.php');
         $container->getDefinition('turbo.twig.extension')->replaceArgument(1, $config['default_transport']);
 

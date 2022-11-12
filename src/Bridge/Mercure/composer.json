@@ -22,7 +22,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Symfony\\UX\\Turbo\\Bridge\\Mercure\\": ""
+            "Symfony\\UX\\Turbo\\Bridge\\Mercure\\": "src/"
         }
     },
     "require": {

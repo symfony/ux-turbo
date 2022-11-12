@@ -48,4 +48,9 @@ final class TurboBundle extends Bundle
             }
         }, PassConfig::TYPE_BEFORE_REMOVING);
     }
+
+    public function getPath(): string
+    {
+        return \dirname(__DIR__);
+    }
 }
