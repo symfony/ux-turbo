@@ -1,0 +1,25 @@
+{
+    "name": "@symfony/ux-turbo",
+    "description": "Hotwire Turbo integration for Symfony",
+    "license": "MIT",
+    "private": true,
+    "version": "0.1.0",
+    "symfony": {
+        "controllers": {
+            "turbo-core": {
+                "main": "dist/turbo_controller.js",
+                "webpackMode": "eager",
+                "fetch": "eager",
+                "enabled": true
+            }
+        }
+    },
+    "peerDependencies": {
+        "@hotwired/turbo": "^7.0.1",
+        "@hotwired/stimulus": "^3.0.0"
+    },
+    "devDependencies": {
+        "@hotwired/turbo": "^7.1.0",
+        "@hotwired/stimulus": "^3.0.0"
+    }
+}
