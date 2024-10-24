@@ -76,4 +76,32 @@ class TurboStreamTest extends TestCase
             TurboStream::refresh('a"b')
         );
     }
+
+    public function testCustom(): void
+    {
+        $this->assertSame(<<<EOHTML
+            <turbo-stream action="customAction" targets="some[&quot;selector&quot;]" someAttr="someValue" boolAttr intAttr="0" floatAttr="3.14">
+                <template><div>content</div></template>
+            </turbo-stream>
+            EOHTML,
+            TurboStream::action('customAction', 'some["selector"]', '<div>content</div>', ['someAttr' => 'someValue', 'boolAttr' => null, 'intAttr' => 0, 'floatAttr' => 3.14])
+        );
+    }
+
+    /**
+     * @dataProvider customThrowsExceptionDataProvider
+     *
+     * @param array<string, string|int|float|null> $attr
+     */
+    public function testCustomThrowsException(string $action, string $target, string $html, array $attr): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        TurboStream::action($action, $target, $html, $attr);
+    }
+
+    public static function customThrowsExceptionDataProvider(): \Generator
+    {
+        yield ['customAction', 'some["selector"]', '<div>content</div>', ['action' => 'someAction']];
+        yield ['customAction', 'some["selector"]', '<div>content</div>', ['targets' => 'someTargets']];
+    }
 }

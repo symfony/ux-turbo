@@ -104,4 +104,20 @@ class TurboStreamResponse extends Response
 
         return $this;
     }
+
+    /**
+     * Custom action and attributes.
+     *
+     * Set boolean attributes (e.g., `disabled`) by providing the attribute name as key with `null` as value.
+     *
+     * @param array<string, string|int|float|null> $attr
+     *
+     * @return $this
+     */
+    public function action(string $action, string $target, string $html, array $attr = []): static
+    {
+        $this->setContent($this->getContent().TurboStream::action($action, $target, $html, $attr));
+
+        return $this;
+    }
 }

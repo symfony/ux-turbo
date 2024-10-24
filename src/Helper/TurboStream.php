@@ -86,6 +86,34 @@ final class TurboStream
         return \sprintf('<turbo-stream action="refresh" request-id="%s"></turbo-stream>', htmlspecialchars($requestId));
     }
 
+    /**
+     * Custom action and attributes.
+     *
+     * Set boolean attributes (e.g., `disabled`) by providing the attribute name as key with `null` as value.
+     *
+     * @param array<string, string|int|float|null> $attr
+     */
+    public static function action(string $action, string $target, string $html, array $attr = []): string
+    {
+        if (\array_key_exists('action', $attr) || \array_key_exists('targets', $attr)) {
+            throw new \InvalidArgumentException('The "action" and "targets" attributes are reserved and cannot be used.');
+        }
+
+        $attrString = '';
+        foreach ($attr as $key => $value) {
+            $key = htmlspecialchars($key);
+            if (null === $value) {
+                $attrString .= \sprintf(' %s', $key);
+            } elseif (\is_int($value) || \is_float($value)) {
+                $attrString .= \sprintf(' %s="%s"', $key, $value);
+            } else {
+                $attrString .= \sprintf(' %s="%s"', $key, htmlspecialchars($value));
+            }
+        }
+
+        return self::wrap(htmlspecialchars($action), $target, $html, $attrString);
+    }
+
     private static function wrap(string $action, string $target, string $html, string $attr = ''): string
     {
         return \sprintf(<<<EOHTML
