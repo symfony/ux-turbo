@@ -250,6 +250,44 @@ a Turbo Frame, and retrieve the ID of this frame::
         }
     }
 
+<twig:Turbo:Frame> Twig Component
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. versionadded:: 2.22
+
+    The ``<twig:Turbo:Frame>`` Twig Component was added in Turbo 2.22.
+
+Simple example:
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Frame id="the_frame_id" />
+
+    {# renders as: #}
+    <turbo-frame id="the_frame_id"></turbo-frame>
+
+With a HTML attribute:
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Frame id="the_frame_id" loading="lazy" src="{{ path('block') }}" />
+
+    {# renders as: #}
+    <turbo-frame id="the_frame_id" loading="lazy" src="https://example.com/block"></turbo-frame>
+
+With content:
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Frame id="the_frame_id" src="{{ path('block') }}">
+        A placeholder.
+    </twig:Turbo:Frame>
+
+    {# renders as: #}
+    <turbo-frame id="the_frame_id" src="https://example.com/block">
+        A placeholder.
+    </turbo-frame>
+
 Writing Tests
 ^^^^^^^^^^^^^
 
