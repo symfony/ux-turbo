@@ -6,6 +6,14 @@
     "version": "0.1.0",
     "main": "dist/turbo_controller.js",
     "types": "dist/turbo_controller.d.ts",
+    "scripts": {
+        "build": "echo 'The build script is not yet configured.' && exit 1",
+        "test": "echo 'The test script is not yet configured.' && exit 1",
+        "lint": "biome lint --write",
+        "format": "biome format --write",
+        "check-lint": "biome lint",
+        "check-format": "biome format"
+    },
     "symfony": {
         "controllers": {
             "turbo-core": {
