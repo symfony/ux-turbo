@@ -12,6 +12,7 @@
 namespace Symfony\UX\Turbo\Twig;
 
 use Psr\Container\ContainerInterface;
+use Symfony\UX\Turbo\Bridge\Mercure\TopicSet;
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
@@ -35,7 +36,7 @@ final class TwigExtension extends AbstractExtension
     }
 
     /**
-     * @param object|string $topic
+     * @param object|string|array<object|string> $topic
      */
     public function turboStreamListen(Environment $env, $topic, ?string $transport = null): string
     {
@@ -43,6 +44,10 @@ final class TwigExtension extends AbstractExtension
 
         if (!$this->turboStreamListenRenderers->has($transport)) {
             throw new \InvalidArgumentException(\sprintf('The Turbo stream transport "%s" does not exist.', $transport));
+        }
+
+        if (\is_array($topic)) {
+            $topic = new TopicSet($topic);
         }
 
         return $this->turboStreamListenRenderers->get($transport)->renderTurboStreamListen($env, $topic);
