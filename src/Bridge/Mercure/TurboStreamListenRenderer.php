@@ -44,11 +44,9 @@ final class TurboStreamListenRenderer implements TurboStreamListenRendererInterf
 
     public function renderTurboStreamListen(Environment $env, $topic): string
     {
-        if ($topic instanceof TopicSet) {
-            $topics = array_map(\Closure::fromCallable([$this, 'resolveTopic']), $topic->getTopics());
-        } else {
-            $topics = [$this->resolveTopic($topic)];
-        }
+        $topics = $topic instanceof TopicSet
+            ? array_map($this->resolveTopic(...), $topic->getTopics())
+            : [$this->resolveTopic($topic)];
 
         $controllerAttributes = ['hub' => $this->hub->getPublicUrl()];
         if (1 < \count($topics)) {
