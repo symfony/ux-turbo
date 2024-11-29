@@ -19,12 +19,20 @@ final class TurboStreamListenRendererTest extends KernelTestCase
 {
     /**
      * @dataProvider provideTestCases
+     *
+     * @param array<mixed> $context
      */
-    public function testRenderTurboStreamListen(string $template, array $context, string $expectedResult)
+    public function testRenderTurboStreamListen(string $template, array $context, string $expectedResult): void
     {
-        $this->assertSame($expectedResult, self::getContainer()->get('twig')->createTemplate($template)->render($context));
+        $twig = self::getContainer()->get('twig');
+        self::assertInstanceOf(\Twig\Environment::class, $twig);
+
+        $this->assertSame($expectedResult, $twig->createTemplate($template)->render($context));
     }
 
+    /**
+     * @return iterable<array{0: string, 1: array<mixed>, 2: string}>
+     */
     public static function provideTestCases(): iterable
     {
         $newEscape = (new \ReflectionClass(StimulusAttributes::class))->hasMethod('escape');
