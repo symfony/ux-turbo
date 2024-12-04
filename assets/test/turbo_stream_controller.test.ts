@@ -8,10 +8,10 @@
  */
 
 import { Application } from '@hotwired/stimulus';
-import { getByTestId } from '@testing-library/dom';
 import { clearDOM, mountDOM } from '@symfony/stimulus-testing';
-import TurboStreamController from '../src/turbo_stream_controller';
+import { getByTestId } from '@testing-library/dom';
 import { vi } from 'vitest';
+import TurboStreamController from '../src/turbo_stream_controller';
 
 const startStimulus = () => {
     const application = Application.start();
