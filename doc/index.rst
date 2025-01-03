@@ -394,18 +394,192 @@ Let's discover how to use Turbo Streams to enhance your `Symfony forms`_::
 
     {# bottom of new.html.twig #}
     {% block success_stream %}
-    <turbo-stream action="replace" targets="#my_div_id">
-        <template>
-            The element having the id "my_div_id" will be replaced by this block, without a full page reload!
+        <turbo-stream action="replace" targets="#my_div_id">
+            <template>
+                The element having the id "my_div_id" will be replaced by this block, without a full page reload!
 
-            <div>The task "{{ task }}" has been created!</div>
-        </template>
-    </turbo-stream>
+                <div>The task "{{ task }}" has been created!</div>
+            </template>
+        </turbo-stream>
     {% endblock %}
 
 Supported actions are ``append``, ``prepend``, ``replace``, ``update``,
 ``remove``, ``before``, ``after`` and ``refresh``.
 `Read the Turbo Streams documentation for more details`_.
+
+Stream Messages and Actions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To render a ``<turbo-stream>`` element, we recommend using the ``<twig:Turbo:Stream:*>`` Twig Component to avoid typos.
+
+Append
+""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Append target="#dom_id">
+        Content to append to container designated with the dom_id.
+    </twig:Turbo:Stream:Append>
+
+    {# renders as: #}
+    <turbo-stream action="append" targets="#dom_id">
+        <template>
+            Content to append to container designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - Append <https://turbo.hotwired.dev/reference/streams#append>`_.
+
+Prepend
+"""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Prepend target="#dom_id">
+        Content to prepend to container designated with the dom_id.
+    </twig:Turbo:Stream:Prepend>
+
+    {# renders as: #}
+    <turbo-stream action="prepend" targets="#dom_id">
+        <template>
+            Content to prepend to container designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - Prepend <https://turbo.hotwired.dev/reference/streams#prepend>`_.
+
+Replace
+"""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Replace target="#dom_id">
+        Content to replace the element designated with the dom_id.
+    </twig:Turbo:Stream:Replace>
+
+    {# renders as: #}
+    <turbo-stream action="replace" targets="#dom_id">
+        <template>
+            Content to replace the element designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+.. code-block:: html+twig
+
+    {# with morphing #}
+    <twig:Turbo:Stream:Replace target="#dom_id" morph>
+        Content to replace the element.
+    </twig:Turbo:Stream:Replace>
+
+    {# renders as: #}
+    <turbo-stream action="replace" targets="#dom_id" method="morph">
+        <template>
+            Content to replace the element.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - Replace <https://turbo.hotwired.dev/reference/streams#replace>`_.
+
+Update
+""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Update target="#dom_id">
+        Content to update to container designated with the dom_id.
+    </twig:Turbo:Stream:Update>
+
+    {# renders as: #}
+    <turbo-stream action="update" targets="#dom_id">
+        <template>
+            Content to update to container designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+.. code-block:: html+twig
+
+    {# with morphing #}
+    <twig:Turbo:Stream:Update target="#dom_id" morph>
+        Content to replace the element.
+    </twig:Turbo:Stream:Update>
+
+    {# renders as: #}
+    <turbo-stream action="update" targets="#dom_id" method="morph">
+        <template>
+            Content to replace the element.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - Update <https://turbo.hotwired.dev/reference/streams#update>`_.
+
+Remove
+""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Remove target="#dom_id" />
+
+    {# renders as: #}
+    <turbo-stream action="remove" targets="#dom_id"></turbo-stream>
+
+For more info, see: `Turbo Streams - Remove <https://turbo.hotwired.dev/reference/streams#remove>`_.
+
+Before
+""""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Before target="#dom_id">
+        Content to place before the element designated with the dom_id.
+    </twig:Turbo:Stream:Before>
+
+    {# renders as: #}
+    <turbo-stream action="before" targets="#dom_id">
+        <template>
+            Content to place before the element designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - Before <https://turbo.hotwired.dev/reference/streams#before>`_.
+
+After
+"""""
+
+.. code-block:: html+twig
+
+    <twig:Turbo:Stream:Refresh target="#dom_id">
+        Content to place after the element designated with the dom_id.
+    </twig:Turbo:Stream:After>
+
+    {# renders as: #}
+    <turbo-stream action="after" targets="#dom_id">
+        <template>
+            Content to place after the element designated with the dom_id.
+        </template>
+    </turbo-stream>
+
+For more info, see: `Turbo Streams - After <https://turbo.hotwired.dev/reference/streams#after>`_.
+
+Refresh
+"""""""
+
+.. code-block:: html+twig
+
+    {# without [request-id] #}
+    <twig:Turbo:Stream:Refresh />
+
+    {# renders as: #}
+    <turbo-stream action="refresh"></turbo-stream>
+
+.. code-block:: html+twig
+
+    {# debounced with [request-id] #}
+    <twig:Turbo:Stream:Refresh requestId="abcd-1234" />
+
+    {# renders as: #}
+    <turbo-stream action="refresh" request-id="abcd-1234"></turbo-stream>
+
+For more info, see: `Turbo Streams - Refresh <https://turbo.hotwired.dev/reference/streams#refresh>`_.
 
 Resetting the Form
 ~~~~~~~~~~~~~~~~~~
