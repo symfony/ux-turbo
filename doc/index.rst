@@ -342,11 +342,6 @@ clients. There are two main ways to receive the updates:
 Forms
 ^^^^^
 
-.. versionadded:: 2.1
-
-    Prior to 2.1, ``TurboStreamResponse::STREAM_FORMAT`` was used instead of ``TurboBundle::STREAM_FORMAT``.
-    Also, one had to return a new ``TurboStreamResponse()`` object as the third argument to ``$this->render()``.
-
 Let's discover how to use Turbo Streams to enhance your `Symfony forms`_::
 
     // src/Controller/TaskController.php
@@ -383,7 +378,6 @@ Let's discover how to use Turbo Streams to enhance your `Symfony forms`_::
                 return $this->redirectToRoute('task_success', [], Response::HTTP_SEE_OTHER);
             }
 
-            // Symfony 6.2+
             return $this->render('task/new.html.twig', [
                 'form' => $form,
             ]);
@@ -500,7 +494,7 @@ Then, enable the "mercure stream" controller in ``assets/controllers.json``:
         "mercure-turbo-stream": {
     +         "enabled": true,
     -         "enabled": false,
-            "fetch": "lazy"
+            "fetch": "eager"
         }
     },
 
@@ -512,14 +506,19 @@ If you use Symfony Flex, the configuration has been generated for you,
 be sure to update the ``MERCURE_URL`` in the ``.env`` file to point to a
 Mercure Hub (it's not necessary if you are using Symfony Docker).
 
-Otherwise, configure Mercure Hub(s) to use:
+Otherwise, configure Mercure Hub(s) as explained in the documentation:
 
 .. code-block:: yaml
 
-    # config/packages/turbo.yaml
-    turbo:
-        mercure:
-            hubs: [default]
+    # config/packages/mercure.yaml
+    mercure:
+        hubs:
+            default:
+                url: '%env(MERCURE_URL)%'
+                public_url: '%env(MERCURE_PUBLIC_URL)%'
+                jwt:
+                    secret: '%env(MERCURE_JWT_SECRET)%'
+                    publish: '*'
 
 Let's create our chat::
 
@@ -784,13 +783,6 @@ the following configuration:
             hub2:
                 url: https://hub2.example.net/.well-known/mercure
                 jwt: snip
-
-.. code-block:: yaml
-
-    # config/packages/turbo.yaml
-    turbo:
-        mercure:
-            hubs: [hub1, hub2]
 
 Use the appropriate Mercure ``HubInterface`` service to send a change
 using a specific transport::
