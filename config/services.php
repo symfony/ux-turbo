@@ -11,11 +11,13 @@
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use Symfony\Component\HttpKernel\KernelEvents;
 use Symfony\UX\Turbo\Broadcaster\BroadcasterInterface;
 use Symfony\UX\Turbo\Broadcaster\IdAccessor;
 use Symfony\UX\Turbo\Broadcaster\ImuxBroadcaster;
 use Symfony\UX\Turbo\Broadcaster\TwigBroadcaster;
 use Symfony\UX\Turbo\Doctrine\BroadcastListener;
+use Symfony\UX\Turbo\Request\RequestListener;
 use Symfony\UX\Turbo\Twig\TwigExtension;
 
 /*
@@ -55,5 +57,8 @@ return static function (ContainerConfigurator $container): void {
             ])
             ->tag('doctrine.event_listener', ['event' => 'onFlush'])
             ->tag('doctrine.event_listener', ['event' => 'postFlush'])
+
+        ->set('turbo.kernel.request_listener', RequestListener::class)
+            ->tag('kernel.event_listener', ['event' => KernelEvents::REQUEST, 'priority' => 256])
     ;
 };

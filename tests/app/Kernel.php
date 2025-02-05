@@ -29,6 +29,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -144,6 +145,7 @@ class Kernel extends BaseKernel
         $routes->add('artists', '/artists')->controller('kernel::artists');
         $routes->add('artist', '/artists/{id}')->controller('kernel::artist');
         $routes->add('artist_from_song', '/artistFromSong')->controller('kernel::artistFromSong');
+        $routes->add('turbo_request', '/turboRequest')->controller('kernel::turboRequest');
     }
 
     public function getProjectDir(): string
@@ -311,5 +313,12 @@ class Kernel extends BaseKernel
         return new Response($twig->render('artist_from_song.html.twig', [
             'song' => $song,
         ]));
+    }
+
+    public function turboRequest(Request $request): Response
+    {
+        return new JsonResponse([
+            'preferred_format' => $request->getPreferredFormat(),
+        ]);
     }
 }
