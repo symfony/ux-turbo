@@ -428,8 +428,6 @@ Append
         </template>
     </turbo-stream>
 
-For more info, see: `Turbo Streams - Append <https://turbo.hotwired.dev/reference/streams#append>`_.
-
 Prepend
 """""""
 
@@ -445,8 +443,6 @@ Prepend
             Content to prepend to container designated with the dom_id.
         </template>
     </turbo-stream>
-
-For more info, see: `Turbo Streams - Prepend <https://turbo.hotwired.dev/reference/streams#prepend>`_.
 
 Replace
 """""""
@@ -478,8 +474,6 @@ Replace
         </template>
     </turbo-stream>
 
-For more info, see: `Turbo Streams - Replace <https://turbo.hotwired.dev/reference/streams#replace>`_.
-
 Update
 """"""
 
@@ -510,8 +504,6 @@ Update
         </template>
     </turbo-stream>
 
-For more info, see: `Turbo Streams - Update <https://turbo.hotwired.dev/reference/streams#update>`_.
-
 Remove
 """"""
 
@@ -521,8 +513,6 @@ Remove
 
     {# renders as: #}
     <turbo-stream action="remove" targets="#dom_id"></turbo-stream>
-
-For more info, see: `Turbo Streams - Remove <https://turbo.hotwired.dev/reference/streams#remove>`_.
 
 Before
 """"""
@@ -540,8 +530,6 @@ Before
         </template>
     </turbo-stream>
 
-For more info, see: `Turbo Streams - Before <https://turbo.hotwired.dev/reference/streams#before>`_.
-
 After
 """""
 
@@ -557,8 +545,6 @@ After
             Content to place after the element designated with the dom_id.
         </template>
     </turbo-stream>
-
-For more info, see: `Turbo Streams - After <https://turbo.hotwired.dev/reference/streams#after>`_.
 
 Refresh
 """""""
@@ -578,8 +564,6 @@ Refresh
 
     {# renders as: #}
     <turbo-stream action="refresh" request-id="abcd-1234"></turbo-stream>
-
-For more info, see: `Turbo Streams - Refresh <https://turbo.hotwired.dev/reference/streams#refresh>`_.
 
 Resetting the Form
 ~~~~~~~~~~~~~~~~~~
