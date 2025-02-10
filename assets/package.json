@@ -38,6 +38,7 @@
     },
     "devDependencies": {
         "@hotwired/stimulus": "^3.0.0",
-        "@hotwired/turbo": "^7.1.0 || ^8.0"
+        "@hotwired/turbo": "^7.1.0 || ^8.0",
+        "@types/hotwired__turbo": "^8.0.4"
     }
 }
