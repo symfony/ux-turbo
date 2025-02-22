@@ -410,7 +410,7 @@ Supported actions are ``append``, ``prepend``, ``replace``, ``update``,
 Stream Messages and Actions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To render a ``<turbo-stream>`` element, we recommend using the ``<twig:Turbo:Stream:*>`` Twig Component to avoid typos.
+To render a ``<turbo-stream>`` element, this bundle provides a set of ``<twig:Turbo:Stream:*>`` Twig Components. These components make it easy to inject content directly into the ``<template>`` tag, pass attributes, and set the desired morphing mode with a clear and consistent syntax.
 
 Append
 """"""
