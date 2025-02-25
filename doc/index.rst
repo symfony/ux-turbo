@@ -529,7 +529,7 @@ After
 
 .. code-block:: html+twig
 
-    <twig:Turbo:Stream:Refresh target="#dom_id">
+    <twig:Turbo:Stream:After target="#dom_id">
         Content to place after the element designated with the dom_id.
     </twig:Turbo:Stream:After>
 
