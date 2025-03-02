@@ -33,6 +33,10 @@ needed if you're using AssetMapper):
     $ npm install --force
     $ npm run watch
 
+.. note::
+
+    For more complex installation scenarios, you can install the JavaScript assets through the `@symfony/ux-turbo npm package`_
+
 Usage
 -----
 
@@ -1086,3 +1090,4 @@ Symfony UX Turbo has been created by `Kévin Dunglas`_. It has been inspired by
 .. _`sroze/live-twig`: https://github.com/sroze/live-twig
 .. _`Moving <script> inside <head> and the "defer" Attribute`: https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute
 .. _`Expression Language`: https://symfony.com/doc/current/components/expression_language.html
+.. _`@symfony/ux-turbo npm package`: https://www.npmjs.com/package/@symfony/ux-turbo
