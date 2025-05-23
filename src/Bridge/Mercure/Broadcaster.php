@@ -68,6 +68,12 @@ final class Broadcaster implements BroadcasterInterface
         $topics = [];
 
         foreach ((array) ($options['topics'] ?? []) as $topic) {
+            // @phpstan-ignore function.alreadyNarrowedType ($topic should always be a string given the PHPDoc... could be removed in 3.x)
+            if (!\is_string($topic)) {
+                $topics[] = $topic;
+                continue;
+            }
+
             if (!str_starts_with($topic, '@=')) {
                 $topics[] = $topic;
                 continue;
