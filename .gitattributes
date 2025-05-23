@@ -1,7 +1,7 @@
 /.git* export-ignore
 /.symfony.bundle.yaml export-ignore
 /phpunit.xml.dist export-ignore
-/phpstan.neon.dist export-ignore
+/phpstan.dist.neon export-ignore
 /assets/src export-ignore
 /assets/test export-ignore
 /assets/vitest.config.js export-ignore
