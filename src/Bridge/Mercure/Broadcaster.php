@@ -68,11 +68,6 @@ final class Broadcaster implements BroadcasterInterface
         $topics = [];
 
         foreach ((array) ($options['topics'] ?? []) as $topic) {
-            if (!\is_string($topic)) {
-                $topics[] = $topic;
-                continue;
-            }
-
             if (!str_starts_with($topic, '@=')) {
                 $topics[] = $topic;
                 continue;

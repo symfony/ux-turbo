@@ -61,6 +61,7 @@ final class BroadcastListener implements ResetInterface
             return;
         }
 
+        // @phpstan-ignore function.alreadyNarrowedType, method.notFound (`getEntityManager()` has been removed in Doctrine 3.0)
         $em = method_exists($eventArgs, 'getObjectManager') ? $eventArgs->getObjectManager() : $eventArgs->getEntityManager();
         $uow = $em->getUnitOfWork();
         foreach ($uow->getScheduledEntityInsertions() as $entity) {
@@ -85,6 +86,7 @@ final class BroadcastListener implements ResetInterface
             return;
         }
 
+        // @phpstan-ignore function.alreadyNarrowedType, method.notFound (`getEntityManager()` has been removed in Doctrine 3.0)
         $em = method_exists($eventArgs, 'getObjectManager') ? $eventArgs->getObjectManager() : $eventArgs->getEntityManager();
 
         try {

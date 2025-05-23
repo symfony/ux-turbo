@@ -42,6 +42,7 @@ final class Broadcast
      */
     public function __construct(...$options)
     {
+        // @phpstan-ignore function.alreadyNarrowedType
         if ([0] === array_keys($options) && \is_array($options[0]) && \is_string(key($options[0]))) {
             $options = $options[0];
         }
