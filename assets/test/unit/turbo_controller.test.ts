@@ -10,8 +10,8 @@
 import { Application } from '@hotwired/stimulus';
 import { getByTestId } from '@testing-library/dom';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { clearDOM, mountDOM } from '../../../../test/stimulus-helpers';
-import TurboController from '../src/turbo_controller';
+import { clearDOM, mountDOM } from '../../../../../test/stimulus-helpers';
+import TurboController from '../../src/turbo_controller';
 
 const startStimulus = () => {
     const application = Application.start();
